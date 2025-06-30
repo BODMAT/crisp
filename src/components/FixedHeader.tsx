@@ -20,7 +20,7 @@ export function FixedHeader() {
     return (
         <header className="bg-[var(--color-background)] transitioned py-2 h-[80px]">
             <div className="myContainer h-full flex justify-between gap-7 items-center">
-                <a href="/" className="text-[var(--color-text)] transitioned font-black fontTitle text-[50px] max-[620px]:text-[35px]">
+                <a href="/crisp/" className="text-[var(--color-text)] transitioned font-black fontTitle text-[50px] max-[620px]:text-[35px]">
                     <LogoIcon className="stroke-current text-[var(--color-text)] transition-all duration-500" />
                 </a>
                 {!isMobile ? (

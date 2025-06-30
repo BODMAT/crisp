@@ -6,6 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { useEffect, useRef, type ReactNode } from 'react';
 import { useSwiperStore } from '../../store/swiperSchema';
+import { Filters } from '../Filters';
 
 export function SwiperCustom({ children, title, isInPopup = false }: { children: ReactNode, title?: string, isInPopup?: boolean }) {
     const prevRef = useRef<HTMLButtonElement>(null);
@@ -74,7 +75,6 @@ export function SwiperCustom({ children, title, isInPopup = false }: { children:
         };
     }, []);
 
-
     return (
         <div className="pt-5 flex items-center justify-center">
             <div className="myContainer !w-full">
@@ -82,13 +82,15 @@ export function SwiperCustom({ children, title, isInPopup = false }: { children:
                     {title && (
                         <h1 className='text-[var(--color-text)] text-[35px] fontOswald uppercase font-bold max-sm:text-[25px]'>{title}</h1>
                     )}
-
                     {navigation && (
                         <div className="flex gap-3">
                             <button ref={prevRef} className="disabled:bg-gray-500 disabled:cursor-not-allowed cursor-pointer fontOswald font-bold text-2xl px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300">←</button>
                             <button ref={nextRef} className="disabled:bg-gray-500 disabled:cursor-not-allowed cursor-pointer fontOswald font-bold text-2xl px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300">→</button>
                         </div>
                     )}
+                </div>
+                <div className="myContainer mb-3">
+                    <Filters isInPopup={isInPopup} />
                 </div>
                 <Swiper
                     onSwiper={onSwiperInit}

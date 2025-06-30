@@ -1,21 +1,24 @@
 import { useState } from "react";
-import type { Colors, IProduct } from "../../models/productsModel";
+import type { IProduct } from "../../models/productsModel";
 import { Accordion } from "../Accordion/Accordion";
 import { SwiperCustom } from "./SwiperCustom";
 import { SwiperSlide } from "swiper/react";
+import { useFilterStore } from "../../store/filters";
+import { usePopupStore } from "../../store/popup";
 
-export function ProductInfo({ product, color }: { product: IProduct, color: Colors }) {
-    const images = product.imagesByColor[color];
-
+export function ProductInfo({ product }: { product: IProduct }) {
+    const { currentColorInPopup: color } = useFilterStore();
+    const images = color && product.imagesByColor[color];
     const [selectedSize, setSelectedSize] = useState<string>("");
-
+    const { close, open } = usePopupStore();
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!selectedSize) {
             alert("Будь ласка, виберіть розмір");
             return;
         }
-        console.log("Додано в кошик");
+        close();
+        setTimeout(() => open("Notification", <p className="py-5 text-[var(--color-text)] fontRoboto font-semibold">Додано в кошик: {product.name} - {color}, {selectedSize}</p>), 200);
     };
     return (
         <div className="mb-5 flex flex-nowrap items-center gap-3 w-full max-[620px]:flex-col-reverse">
