@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+.swiper-pagination-bullet {
+  background-color: var(--color-text) !important;
+  opacity: 0.5 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--color-accent) !important;
+  opacity: 1 !important;
+}
+
+.no-scroll-popup {
+    overflow: hidden;
+    height: 100vh;
+}
+
+@layer base {
+        ul,
+        ol {
+            list-style: none !important;
+            padding-left: 0 !important;
+            margin: 0 !important;
+        }
+
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+
+    .transitioned {
+        @apply transition-all duration-500 ease-[cubic-bezier(0.075,0.82,0.165,1)];
+    }
+    .myContainer {
+        @apply max-w-[1300px] mx-auto box-content px-[15px];
+    }
+
+    .fontRoboto {
+        font-family: "Roboto", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
+
+    .fontOswald {
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
+
+    :root {
+    --color-text: #000;
+    --color-background: #f2f2f2;
+    --color-card: #ffffff;
+    --color-primary: #57a4eb;
+    --color-accent: #eb5757;
+    --color-muted: #828282;
+    --color-hover: #f0f2f2;
+    --color-divider: #c4c4c4;
+    --color-link: #0f6db1;
+    }
+
+    :where(.dark, .dark *) {
+    --color-text: #ffffff;
+    --color-background: #000204;
+    --color-card: #1a1a1a;
+    --color-primary: #57a4eb;
+    --color-accent: #eb5757;
+    --color-muted: #c4c4c4;
+    --color-hover: #1f2b3d;
+    --color-divider: #3f3f3f;
+    --color-link: #57a4eb;
+    }
+
+}
